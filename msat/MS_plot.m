@@ -778,10 +778,12 @@ function [VALmin, VALmax] = max_min_pole(AZ, INC, VAL)
       [VALmax_x,VALmax_y]=sph2cart(AZ(imax,jmax)*rad,INC(imax,jmax)*rad,1) ;   
 
       % mark the max. min. values 
-      h=plot(VALmax_x,VALmax_y,'ws') ;
-      set(h,'MarkerFaceColor','black');
-      h=plot(VALmin_x,VALmin_y,'wo') ;
-      set(h,'MarkerFaceColor','black');
+      if strcmp(projection,'sphere')
+          h=plot(VALmax_x,VALmax_y,'ws') ;
+          set(h,'MarkerFaceColor','black');
+          h=plot(VALmin_x,VALmin_y,'wo') ;
+          set(h,'MarkerFaceColor','black');
+      end
 end
 
 function pol_pole(V_x,V_y,V_z, X, Y, Z, AZ, INC, ...
